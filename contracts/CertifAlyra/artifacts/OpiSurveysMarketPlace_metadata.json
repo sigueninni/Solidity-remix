@@ -104,7 +104,7 @@
 			},
 			{
 				"inputs": [],
-				"name": "LISTING_FEE",
+				"name": "LISTING_OPICHAIN_FEE",
 				"outputs": [
 					{
 						"internalType": "uint256",
@@ -128,7 +128,7 @@
 						"type": "uint256"
 					}
 				],
-				"name": "buyNft",
+				"name": "buySurveyResultNft",
 				"outputs": [],
 				"stateMutability": "payable",
 				"type": "function"
@@ -269,11 +269,6 @@
 			{
 				"inputs": [
 					{
-						"internalType": "address",
-						"name": "_nftContract",
-						"type": "address"
-					},
-					{
 						"internalType": "uint256",
 						"name": "_tokenId",
 						"type": "uint256"
@@ -340,7 +335,7 @@
 						"type": "uint256"
 					}
 				],
-				"name": "resellNft",
+				"name": "resellSurveyResultNft",
 				"outputs": [],
 				"stateMutability": "payable",
 				"type": "function"
@@ -538,11 +533,11 @@
 			]
 		},
 		"contracts/CertifAlyra/OpiSurveysMarketPlace.sol": {
-			"keccak256": "0x5e8b048badac7d4ce9d6a5af58e9257d5af90ca4b13e8c1414eb43346fd54a56",
+			"keccak256": "0xa1d3b0c67846ce07bf5bd4b966ad43a1192b4df4ea0479cd082ac090cdb1e06d",
 			"license": "GPL-3.0",
 			"urls": [
-				"bzz-raw://2b2549b5eb999a284daf43408c34e73e0aeb49efab9a36a03527cf6be628400c",
-				"dweb:/ipfs/QmfZX2ua85M7FCwWsGr2HhC8bd6kiD6zCBMyJeoM5UENKh"
+				"bzz-raw://c5a10e5c2de3004a9fa26e684f7e9713d2aa3878d00bfc344a486142cdbc20b6",
+				"dweb:/ipfs/Qme6Q8an6SJTj3rHuwJYXzT9KtKPk8Fox6R3nvPsTFQGLY"
 			]
 		}
 	},

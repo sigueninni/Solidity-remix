@@ -1,0 +1,133 @@
+{
+	"deploy": {
+		"VM:-": {
+			"linkReferences": {},
+			"autoDeployLib": true
+		},
+		"main:1": {
+			"linkReferences": {},
+			"autoDeployLib": true
+		},
+		"ropsten:3": {
+			"linkReferences": {},
+			"autoDeployLib": true
+		},
+		"rinkeby:4": {
+			"linkReferences": {},
+			"autoDeployLib": true
+		},
+		"kovan:42": {
+			"linkReferences": {},
+			"autoDeployLib": true
+		},
+		"goerli:5": {
+			"linkReferences": {},
+			"autoDeployLib": true
+		},
+		"Custom": {
+			"linkReferences": {},
+			"autoDeployLib": true
+		}
+	},
+	"data": {
+		"bytecode": {
+			"functionDebugData": {},
+			"generatedSources": [],
+			"linkReferences": {},
+			"object": "6080604052348015600f57600080fd5b50606780601d6000396000f3fe608060405260043610601f5760003560e01c8063016899de146027576025565b36602557005b005b602d602f565b005b56fea26469706673582212208e3f1d5458818dd72c2ecdaada4797e1ffebf47798c3df8e5f1a6683109afe7764736f6c63430008110033",
+			"opcodes": "PUSH1 0x80 PUSH1 0x40 MSTORE CALLVALUE DUP1 ISZERO PUSH1 0xF JUMPI PUSH1 0x0 DUP1 REVERT JUMPDEST POP PUSH1 0x67 DUP1 PUSH1 0x1D PUSH1 0x0 CODECOPY PUSH1 0x0 RETURN INVALID PUSH1 0x80 PUSH1 0x40 MSTORE PUSH1 0x4 CALLDATASIZE LT PUSH1 0x1F JUMPI PUSH1 0x0 CALLDATALOAD PUSH1 0xE0 SHR DUP1 PUSH4 0x16899DE EQ PUSH1 0x27 JUMPI PUSH1 0x25 JUMP JUMPDEST CALLDATASIZE PUSH1 0x25 JUMPI STOP JUMPDEST STOP JUMPDEST PUSH1 0x2D PUSH1 0x2F JUMP JUMPDEST STOP JUMPDEST JUMP INVALID LOG2 PUSH5 0x6970667358 0x22 SLT KECCAK256 DUP15 EXTCODEHASH SAR SLOAD PC DUP2 DUP14 0xD7 0x2C 0x2E 0xCD 0xAA 0xDA SELFBALANCE SWAP8 0xE1 SELFDESTRUCT 0xEB DELEGATECALL PUSH24 0x98C3DF8E5F1A6683109AFE7764736F6C6343000811003300 ",
+			"sourceMap": "64:261:0:-:0;;;;;;;;;;;;;;;;;;;"
+		},
+		"deployedBytecode": {
+			"functionDebugData": {
+				"@_19": {
+					"entryPoint": null,
+					"id": 19,
+					"parameterSlots": 0,
+					"returnSlots": 0
+				},
+				"@_23": {
+					"entryPoint": null,
+					"id": 23,
+					"parameterSlots": 0,
+					"returnSlots": 0
+				},
+				"@depot_27": {
+					"entryPoint": 47,
+					"id": 27,
+					"parameterSlots": 0,
+					"returnSlots": 0
+				}
+			},
+			"generatedSources": [],
+			"immutableReferences": {},
+			"linkReferences": {},
+			"object": "608060405260043610601f5760003560e01c8063016899de146027576025565b36602557005b005b602d602f565b005b56fea26469706673582212208e3f1d5458818dd72c2ecdaada4797e1ffebf47798c3df8e5f1a6683109afe7764736f6c63430008110033",
+			"opcodes": "PUSH1 0x80 PUSH1 0x40 MSTORE PUSH1 0x4 CALLDATASIZE LT PUSH1 0x1F JUMPI PUSH1 0x0 CALLDATALOAD PUSH1 0xE0 SHR DUP1 PUSH4 0x16899DE EQ PUSH1 0x27 JUMPI PUSH1 0x25 JUMP JUMPDEST CALLDATASIZE PUSH1 0x25 JUMPI STOP JUMPDEST STOP JUMPDEST PUSH1 0x2D PUSH1 0x2F JUMP JUMPDEST STOP JUMPDEST JUMP INVALID LOG2 PUSH5 0x6970667358 0x22 SLT KECCAK256 DUP15 EXTCODEHASH SAR SLOAD PC DUP2 DUP14 0xD7 0x2C 0x2E 0xCD 0xAA 0xDA SELFBALANCE SWAP8 0xE1 SELFDESTRUCT 0xEB DELEGATECALL PUSH24 0x98C3DF8E5F1A6683109AFE7764736F6C6343000811003300 ",
+			"sourceMap": "64:261:0:-:0;;;;;;;;;;;;;;;;;;;;;;;;;;283:37;;;:::i;:::-;;;:::o"
+		},
+		"gasEstimates": {
+			"creation": {
+				"codeDepositCost": "20600",
+				"executionCost": "75",
+				"totalCost": "20675"
+			},
+			"external": {
+				"": "85",
+				"depot()": "98"
+			}
+		},
+		"methodIdentifiers": {
+			"depot()": "016899de"
+		}
+	},
+	"abi": [
+		{
+			"anonymous": false,
+			"inputs": [
+				{
+					"indexed": false,
+					"internalType": "address",
+					"name": "_addre",
+					"type": "address"
+				}
+			],
+			"name": "badDeposit",
+			"type": "event"
+		},
+		{
+			"anonymous": false,
+			"inputs": [
+				{
+					"indexed": false,
+					"internalType": "address",
+					"name": "_addre",
+					"type": "address"
+				},
+				{
+					"indexed": false,
+					"internalType": "uint256",
+					"name": "_value",
+					"type": "uint256"
+				}
+			],
+			"name": "goodDeposit",
+			"type": "event"
+		},
+		{
+			"stateMutability": "payable",
+			"type": "fallback"
+		},
+		{
+			"inputs": [],
+			"name": "depot",
+			"outputs": [],
+			"stateMutability": "payable",
+			"type": "function"
+		},
+		{
+			"stateMutability": "payable",
+			"type": "receive"
+		}
+	]
+}

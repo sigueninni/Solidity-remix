@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: GPL-3.0
-pragma solidity 0.8.12;
+pragma solidity 0.8.17;
 
 // You can store ETH in this contract and redeem them.
 contract Vault {

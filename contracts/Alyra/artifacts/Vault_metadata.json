@@ -1,0 +1,86 @@
+{
+	"compiler": {
+		"version": "0.8.17+commit.8df45f5f"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"name": "balances",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "redeem",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "store",
+				"outputs": [],
+				"stateMutability": "payable",
+				"type": "function"
+			}
+		],
+		"devdoc": {
+			"kind": "dev",
+			"methods": {
+				"redeem()": {
+					"details": "Redeem your ETH."
+				},
+				"store()": {
+					"details": "Store ETH in the contract."
+				}
+			},
+			"version": 1
+		},
+		"userdoc": {
+			"kind": "user",
+			"methods": {},
+			"version": 1
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"contracts/Alyra/reentrency.sol": "Vault"
+		},
+		"evmVersion": "london",
+		"libraries": {},
+		"metadata": {
+			"bytecodeHash": "ipfs"
+		},
+		"optimizer": {
+			"enabled": false,
+			"runs": 200
+		},
+		"remappings": []
+	},
+	"sources": {
+		"contracts/Alyra/reentrency.sol": {
+			"keccak256": "0xee13fe071e81619236763910422469864c7744e08fed4f5fa6d5adf827d0d6f8",
+			"license": "GPL-3.0",
+			"urls": [
+				"bzz-raw://c228dc36d3afb2c34ea4437a61b73615ddbfc672aaaaf3b5f81783d7c2b17589",
+				"dweb:/ipfs/QmbimA7AAXTNFxS1hhMt1b3apxu8G6QyezYc8tx1ZN9RkV"
+			]
+		}
+	},
+	"version": 1
+}

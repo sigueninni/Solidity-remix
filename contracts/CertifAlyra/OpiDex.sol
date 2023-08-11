@@ -6,7 +6,7 @@ import "@openzeppelin/contracts/token/ERC20/IERC20.sol";
 
 contract OpiDex is Ownable {
     IERC20 opi;
-    address public opiAddress;
+    address public opiContractAddress;
 
     //OPI price in ETH
     uint256 public tokensPerEth = 50;
@@ -19,7 +19,8 @@ contract OpiDex is Ownable {
 
     constructor(address _opiAddress) {
         opi = IERC20(_opiAddress);
-        opiAddress = _opiAddress;
+        opiContractAddress = _opiAddress;
+       // opi.initSupply(address(this),1000);
     }
 
     /**
@@ -31,11 +32,20 @@ contract OpiDex is Ownable {
         uint256 amountToBuy = msg.value * tokensPerEth;
 
         // check if the Vendor Contract has enough amount of tokens for the transaction
-        uint256 OpiDexBalance = opi.balanceOf(opiAddress);
-        require(OpiDexBalance >= amountToBuy, "Not enough OPIs in our balance");
+        uint256 OpiDexBalance = opi.balanceOf(opiContractAddress);
+        require(
+            OpiDexBalance >= amountToBuy,
+            "Not enough OPIs in balance of OpiDex"
+        );
 
         // Transfer token to the msg.sender
         bool sent = opi.transfer(msg.sender, amountToBuy);
+        /*  opi.approve(msg.sender,amountToBuy);
+        bool sent = opi.transferFrom(
+            opiContractAddress,
+            msg.sender,
+            amountToBuy
+        );*/
         require(sent, "Failed to transfer OPIs to user");
 
         // emit the event

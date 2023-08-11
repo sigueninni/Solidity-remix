@@ -1,0 +1,88 @@
+{
+	"compiler": {
+		"version": "0.8.17+commit.8df45f5f"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "_addr",
+						"type": "address"
+					}
+				],
+				"name": "addNFT",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"name": "nfties",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "id",
+						"type": "uint256"
+					},
+					{
+						"internalType": "string",
+						"name": "nameCollection",
+						"type": "string"
+					},
+					{
+						"internalType": "enum NFT.Rarity",
+						"name": "rarity",
+						"type": "uint8"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			}
+		],
+		"devdoc": {
+			"kind": "dev",
+			"methods": {},
+			"version": 1
+		},
+		"userdoc": {
+			"kind": "user",
+			"methods": {},
+			"version": 1
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"contracts/NFT/NFT.sol": "NFT"
+		},
+		"evmVersion": "london",
+		"libraries": {},
+		"metadata": {
+			"bytecodeHash": "ipfs"
+		},
+		"optimizer": {
+			"enabled": false,
+			"runs": 200
+		},
+		"remappings": []
+	},
+	"sources": {
+		"contracts/NFT/NFT.sol": {
+			"keccak256": "0x8a15cba0d3ced46a58efa496c01f9cb6fc58be0918b4011f6e2fe90c77afeb27",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://13710c94ef0f1900672dd3af4c88b05d8935e60e3d0194e2023ec7bb81e78d56",
+				"dweb:/ipfs/QmQ2zeh47g151KMmndGqTfSwvrzDuQ4BEB1xz9VEmPHTgy"
+			]
+		}
+	},
+	"version": 1
+}

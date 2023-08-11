@@ -1,0 +1,65 @@
+{
+	"compiler": {
+		"version": "0.8.12+commit.f00d7308"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"name": "ping",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "pure",
+				"type": "function"
+			}
+		],
+		"devdoc": {
+			"kind": "dev",
+			"methods": {},
+			"version": 1
+		},
+		"userdoc": {
+			"kind": "user",
+			"methods": {},
+			"version": 1
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"contracts/Alyra/Exceptions.sol": "Alice"
+		},
+		"evmVersion": "london",
+		"libraries": {},
+		"metadata": {
+			"bytecodeHash": "ipfs"
+		},
+		"optimizer": {
+			"enabled": false,
+			"runs": 200
+		},
+		"remappings": []
+	},
+	"sources": {
+		"contracts/Alyra/Exceptions.sol": {
+			"keccak256": "0x3b0aafc142774e51df4aaeb99f8dbe1d805e2e1be663f6508a7d0eb75ed38e30",
+			"license": "GPL-3.0",
+			"urls": [
+				"bzz-raw://b0beca3221ed103b42e7bdfdc95a920ad7cd37eb23e1707b45a3eaec571ae2f5",
+				"dweb:/ipfs/QmbCCvEQuWvA9vZQKwRaPFioE59m8G9fsWYtqJQSS3J5Wu"
+			]
+		}
+	},
+	"version": 1
+}

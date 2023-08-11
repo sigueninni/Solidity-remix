@@ -1,0 +1,65 @@
+{
+	"compiler": {
+		"version": "0.8.12+commit.f00d7308"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [
+			{
+				"inputs": [],
+				"stateMutability": "nonpayable",
+				"type": "constructor"
+			},
+			{
+				"inputs": [],
+				"name": "deposit",
+				"outputs": [],
+				"stateMutability": "payable",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "withdrawAll",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			}
+		],
+		"devdoc": {
+			"kind": "dev",
+			"methods": {},
+			"version": 1
+		},
+		"userdoc": {
+			"kind": "user",
+			"methods": {},
+			"version": 1
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"contracts/Alyra/Voting.sol": "Bank"
+		},
+		"evmVersion": "london",
+		"libraries": {},
+		"metadata": {
+			"bytecodeHash": "ipfs"
+		},
+		"optimizer": {
+			"enabled": false,
+			"runs": 200
+		},
+		"remappings": []
+	},
+	"sources": {
+		"contracts/Alyra/Voting.sol": {
+			"keccak256": "0x04da4658c5015d307d94d298521223cd61ec00044281b134c2d4b72415a1cc8e",
+			"license": "GPL-3.0",
+			"urls": [
+				"bzz-raw://58b7879e19016f564a6cdaccd4e41f93bbac3e8247b577834ae6aca8a298ec8b",
+				"dweb:/ipfs/QmWP6rZ52LySZeGWnBXeK1YiwBmMm2z2AjvjcUs9Hj12Ui"
+			]
+		}
+	},
+	"version": 1
+}

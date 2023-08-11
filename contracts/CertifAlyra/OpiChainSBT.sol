@@ -6,6 +6,10 @@ import "@openzeppelin/contracts/utils/Counters.sol";
 import "@openzeppelin/contracts/access/Ownable.sol";
 import "@openzeppelin/contracts/utils/Strings.sol";
 
+/// @title  OpiChain SBT contract
+/// @author Saad Igueninni
+/// @notice ERC721 not transferable, bound to Soul
+/// @dev Inherits the OpenZepplin Ownable ,ERC721URIStorage,Counters & Strings contracts
 contract OpiChainSBT is ERC721URIStorage, Ownable {
     using Counters for Counters.Counter;
 
@@ -32,45 +36,105 @@ contract OpiChainSBT is ERC721URIStorage, Ownable {
     mapping(address => OpiProfile) OpiProfiles;
     Counters.Counter private _OpiIdCounter;
 
-    modifier onlySounders() {
+    event grantedOpiID(OpiProfile _newOpiProfile);
+    event revokedOpiID(address _profileAddress);
+    event updatedOpiID(address _profileAddress);
+
+    constructor() ERC721("OpiChainID", "OpiId") {}
+
+    /*        address test = 0xd9cB466B10b86Da36Cb7E39d6DD86d25A500Ccd6;
+        grantOpiID( test,
+       // "https://gateway.pinata.cloud/ipfs/QmQzEEbvYSV2atiDv8PdT4WuNyjTLbKpEWFVqFFVFLGAut/1.json",
+        "saad",
+        38,
+        0,
+        0); */
+
+    // ::::::::::::: MODIFIERS ::::::::::::: //
+    modifier onlySounders(address _profileAddress) {
         require(
-            (OpiProfiles[msg.sender].isOpiIdGranted &&
-                OpiProfiles[msg.sender].role == Role.Sounder),
+            (OpiProfiles[_profileAddress].isOpiIdGranted &&
+                OpiProfiles[_profileAddress].role == Role.Sounder),
             "You are not a sounder"
         );
         _;
     }
 
-    modifier onlySurveyeds() {
+    modifier onlySurveyeds(address _profileAddress) {
         require(
-            (OpiProfiles[msg.sender].isOpiIdGranted &&
+            (OpiProfiles[_profileAddress].isOpiIdGranted &&
                 OpiProfiles[msg.sender].role == Role.Surveyed),
             "You are not a surveyed"
         );
         _;
     }
 
-    event grantedOpiID(address _profileAddress, uint256 _OpiIdCounter);
-    event revokedOpiID(address _profileAddress);
-    event updatedOpiID(address _profileAddress);
+    modifier opiIdExists(address _profileAddress) {
+        require(
+            OpiProfiles[_profileAddress].isOpiIdGranted,
+            "OpiID do not exists"
+        );
+        _;
+    }
 
-    constructor() ERC721("OpiChainID", "OpiId") {}
+    // ::::::::::::: GETTERS ::::::::::::: //
+    function getOpiID(address _profileAddress)
+        external
+        view
+        onlyOwner
+        opiIdExists(_profileAddress)
+        returns (OpiProfile memory)
+    {
+        return OpiProfiles[_profileAddress];
+    }
 
+    function isGrantedOpiID(address _profileAddress)
+        external
+        view
+        onlyOwner
+        returns (bool)
+    {
+        return OpiProfiles[_profileAddress].isOpiIdGranted;
+    }
+
+    function isSounder(address _profileAddress)
+        external
+        view
+        onlyOwner
+        returns (bool)
+    {
+        return (OpiProfiles[_profileAddress].isOpiIdGranted &&
+            OpiProfiles[_profileAddress].role == Role.Sounder);
+    }
+
+    function isSurveyed(address _profileAddress)
+        external
+        view
+        onlyOwner
+        returns (bool)
+    {
+        return (OpiProfiles[_profileAddress].isOpiIdGranted &&
+            OpiProfiles[_profileAddress].role == Role.Surveyed);
+    }
+
+    // ::::::::::::: MEMBERS MANAGEMENT ::::::::::::: //
     function grantOpiID(
         address _profileAddress,
-        string calldata _SBTUri,
-        string calldata _name,
+        // string memory _SBTUri,
+        string memory _name,
         uint256 _age,
         uint8 _gender,
         uint8 _role
-    ) external onlyOwner returns (uint256) {
+    ) public onlyOwner returns (uint256) {
+        //To change to external after test
         require(
-            OpiProfiles[msg.sender].OpiIdCounter == 0,
+            !OpiProfiles[_profileAddress].isOpiIdGranted,
             "OpiID already exists"
         );
+
+        _OpiIdCounter.increment(); //To start at 1
         uint256 newOpiID = _OpiIdCounter.current();
         OpiProfile memory newOpiProfile;
-        _OpiIdCounter.increment(); //To start at 1
 
         //Add new Profile
         newOpiProfile.OpiIdCounter = newOpiID;
@@ -82,19 +146,25 @@ contract OpiChainSBT is ERC721URIStorage, Ownable {
         OpiProfiles[_profileAddress] = newOpiProfile;
 
         _mint(_profileAddress, newOpiID);
+
+        string memory urinumber = Strings.toString(newOpiID);
+        string
+            memory tokenURI = "https://ipfs.io/ipfs/QmQiceiGFxV72zuKhy3ggZhoFu1Gcuvu35khedjtxAML6G/";
+        string memory _SBTUri = string.concat(tokenURI, urinumber, ".json");
+
         _setTokenURI(newOpiID, _SBTUri);
 
-        emit grantedOpiID(_profileAddress, newOpiProfile.OpiIdCounter);
-        return newOpiID;
+        emit grantedOpiID(newOpiProfile);
+        return newOpiProfile.OpiIdCounter;
     }
 
     function revokeOpiID(address _profileAddress) external onlyOwner {
         require(
-            OpiProfiles[msg.sender].OpiIdCounter != 0,
+           OpiProfiles[_profileAddress].isOpiIdGranted,
             "OpiID do not exists"
         );
-        delete OpiProfiles[_profileAddress];
         emit revokedOpiID(_profileAddress);
+        delete OpiProfiles[_profileAddress];
     }
 
     function updateOpiID(
@@ -105,7 +175,7 @@ contract OpiChainSBT is ERC721URIStorage, Ownable {
         uint8 _role
     ) external onlyOwner {
         require(
-            OpiProfiles[msg.sender].OpiIdCounter != 0,
+           OpiProfiles[_profileAddress].isOpiIdGranted,
             "OpiID do not exists"
         );
 
@@ -118,9 +188,10 @@ contract OpiChainSBT is ERC721URIStorage, Ownable {
         UpdOpiProfile.role = Role(_role);
         OpiProfiles[_profileAddress] = UpdOpiProfile;
 
-        emit revokedOpiID(_profileAddress);
+        emit updatedOpiID(_profileAddress);
     }
 
+    // ::::::::::::: OVVERIDES ::::::::::::: //
     function _beforeTokenTransfer(
         address from,
         address to,
